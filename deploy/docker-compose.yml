@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+  database:
+    image: postgres
+    restart: always
+    volumes:
+      - ./database:/var/lib/postgresql/data:Z
+      - ./database-init:/docker-entrypoint-initdb.d:Z
+    environment:
+      POSTGRES_PASSWORD: example-secret-password
+      DATABASE_USER: postgres
